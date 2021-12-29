@@ -137,7 +137,7 @@ class Player < Participant
     loop do
       puts "Would you like to hit or stay?"
       answer = gets.chomp.downcase
-      break if %w(hit stay).include?(answer)
+      break if %w(hit h stay s).include?(answer)
       puts "Sorry that's not a valid choice..."
     end
     answer
@@ -244,7 +244,7 @@ class Game
     puts "            ~ Let's play #{GAME_TITLE}! ~"
     puts ""
     puts "Get the sum of your cards close to or equal to #{Hand::TARGET_VALUE}."
-    puts "If you go over #{Hand::TARGET_VALUE} or the dealer is closer,"
+    puts "If you go over #{Hand::TARGET_VALUE} or the dealer is closer"
     puts "you lose!"
     puts ""
   end
@@ -296,9 +296,9 @@ class Game
   def player_turn
     loop do
       choice = player.move
-      player.hit(current_deck.deal(1)) unless choice == 'stay'
+      player.hit(current_deck.deal(1)) unless %w(stay s).include?(choice)
       display_table(:hide)
-      break if player.bust? || choice == 'stay'
+      break if player.bust? || %w(stay s).include?(choice)
     end
   end
 
