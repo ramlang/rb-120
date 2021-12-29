@@ -135,7 +135,7 @@ class Player < Participant
   def move
     answer = nil
     loop do
-      puts "Would you like to hit or stay?"
+      puts "Would you like to hit or stay? (h/s)"
       answer = gets.chomp.downcase
       break if %w(hit h stay s).include?(answer)
       puts "Sorry that's not a valid choice..."
@@ -387,7 +387,7 @@ class Game
   def play_again?
     answer = nil
     loop do
-      puts "Would you like to play again?"
+      puts "Would you like to play again? (yes/no)"
       answer = gets.chomp.downcase
       break if %w(y n yes no).include?(answer)
       puts "Sorry that's not a valid choice..."
